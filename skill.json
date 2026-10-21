@@ -1,0 +1,57 @@
+{
+  "name": "genpark-personal-agent-ambulatory-blood-pressure-dipper-sentinel-skill",
+  "version": "1.0.0",
+  "title": "Ambulatory Blood Pressure Nocturnal Dipping & Surge Sentinel Skill",
+  "description": "Ambulatory blood pressure dipping ratio (nocturnal dip %), non-dipper / reverse-dipper cardiovascular risk, and morning surge index. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "blood-pressure",
+    "nocturnal-dipping",
+    "cardiovascular-risk",
+    "hypertension",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_nocturnal_dipping_ratio",
+      "description": "Calculate nocturnal systolic dipping percentage and classify dipper pattern (Normal, Non-dipper, Extreme dipper, Reverse dipper).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "daytime_mean_sbp": {
+            "type": "number"
+          },
+          "nighttime_mean_sbp": {
+            "type": "number"
+          },
+          "morning_surge_sbp": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "daytime_mean_sbp",
+          "nighttime_mean_sbp"
+        ]
+      }
+    },
+    {
+      "name": "generate_chrono_hypertensive_lifestyle_advisory",
+      "description": "Synthesize chronotherapy and lifestyle timing adjustments based on nocturnal dipping status.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "dipping_category": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dipping_category"
+        ]
+      }
+    }
+  ]
+}
